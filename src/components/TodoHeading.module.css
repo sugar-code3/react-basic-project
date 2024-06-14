@@ -1,0 +1,8 @@
+.todoHeading{
+    text-align: center;
+    font-weight: 700;
+    font-size: 5rem;
+    padding: 1rem;
+   border-bottom:1px solid hsl(140 10% 20%) ;
+ height: 20vh;
+}

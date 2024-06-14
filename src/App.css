@@ -1,0 +1,53 @@
+*{
+  box-sizing: border-box;
+  font-family:'Times New Roman', Times, serif;
+  background-color: antiquewhite;
+}
+input{
+  width: 30vw;
+  border: 2px solid blue;
+}
+.kg-btn{
+  min-width: 10vw;
+  min-height: 7vh;
+}
+.addtodo{
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+width: 100vw;
+align-items: center;
+height: 10vh;
+}
+.items{
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+align-items: center;
+width: 100vw;
+gap: 20px;
+}
+.todoitems{
+  display: flex;
+  width: 100vw;
+}
+.itemname{
+  width: 40vw;
+  font-size: 1.5rem;
+  height: 100%;
+   text-wrap: wrap;
+  text-align: center;
+  align-self: center;
+  padding-left: 4rem;
+}
+.itemdate{
+  width: 40vw;
+  text-align: center;
+  align-self: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.deleteitem{
+  width: 20vw;
+  align-self: center;
+}
