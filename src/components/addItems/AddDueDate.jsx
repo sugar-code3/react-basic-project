@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const AddDueDate = () => {
+const AddDueDate = ({AddDate,value}) => {
+
   return (
     <>
     <div>
-    <input type="date"></input>
+    <input type="date"  value={value} onChange={AddDate}></input>
   </div>
   </>
   )

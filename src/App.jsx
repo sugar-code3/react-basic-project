@@ -3,24 +3,28 @@ import AddTodo from "./components/addItems/AddTodo";
 import TodHeading from "./components/TodoHeading";
 import TodoItems from "./components/TodoItems";
 import "./App.css";
+import { useState } from "react";
+import WelcomeMessage from "./components/WelcomeMessage";
 function App() {
-  let Todolist = [
-    {
-      Name: " Go to collage ",
-      date: "14/01/2024 ",
-    },
-    { 
-      Name: " Take a bath", 
-      date: "15/01/2024 " 
-    },
-  ];
-
+  const intialtodoItem = [];
+  const [todoItem, settodoItem] = useState(intialtodoItem);
+  const handleAddItem = (ItemName, Itemdate) => {
+    const newItemAdd = [
+      ...todoItem,
+      {
+        name: ItemName,
+        duedate: Itemdate,
+      },
+    ];
+    settodoItem(newItemAdd);
+  };
   return (
     <center className="todo-container">
       <div className="items-container">
         <TodHeading></TodHeading>
-        <AddTodo></AddTodo>
-        <TodoItems todoItems={Todolist}></TodoItems>
+        <AddTodo onAddItem={handleAddItem}></AddTodo>
+        <WelcomeMessage itemlist={todoItem}></WelcomeMessage>
+        <TodoItems todoItems={todoItem}></TodoItems>
       </div>
     </center>
   );

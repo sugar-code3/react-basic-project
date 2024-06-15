@@ -1,12 +1,12 @@
+import style from "../components/TodoItems.module.css"
 
-
-import TodoItem from "../TodoItem";
+import TodoItem from "./TodoItem";
 const TodoItems=({todoItems})=>{
     return(
-        <div className="items">
+        <div className={style.items}>
         {
-            todoItems.map(item=>
-                <TodoItem tododate={item.date}  todoName={item.Name}>
+            todoItems.map((item,index)=>
+                <TodoItem key={index} tododate={item.duedate}  todoName={item.name}>
                 </TodoItem>
             )
         }

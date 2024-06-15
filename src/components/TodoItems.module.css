@@ -1,3 +1,8 @@
-.itemsContainer{
-    text-align: left;
+.items{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+    gap: 20px;
     }
