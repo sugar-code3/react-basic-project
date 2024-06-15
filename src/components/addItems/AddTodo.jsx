@@ -1,31 +1,29 @@
 import InputTask from "./InputTask";
 import AddDueDate from "./AddDueDate";
 import AddButton from "./AddButton";
-import { useState } from "react";
-import style from "../addItems/AddTodo.module.css"
+import { useRef } from "react";
+import style from "../addItems/AddTodo.module.css";
 
 function AddTodo({ onAddItem }) {
-  const   [todoName, setTodoName] = useState("");
-  const  [toddate, setTododate] = useState("");
-
-  const handleOnAdd = (event) => {
-    setTodoName( event.target.value);
-  };
-
-  const handleOnDate = (event) => {
-    setTododate( event.target.value) ;
-  };
+  const todoElement = useRef();
+  const duedateElement = useRef();
 
   const onClickItem = () => {
-    onAddItem(todoName, toddate);
-    setTodoName("");
-    setTododate("");
+    const todoName = todoElement.current.value;
+    const toddate = duedateElement.current.value;
+    todoElement.current.value = "";
+    duedateElement.current.value = "";
+    if (todoName == "" || toddate == "") {
+      alert("Enter list Item and date");
+    } else {
+      onAddItem(todoName, toddate);
+    }
   };
 
   return (
     <div className={style.addtodo}>
-      <InputTask value={todoName} AddItem={handleOnAdd} ></InputTask>
-      <AddDueDate  value={toddate} AddDate={handleOnDate}></AddDueDate>
+      <InputTask AddItem={todoElement}></InputTask>
+      <AddDueDate AddDate={duedateElement}></AddDueDate>
       <AddButton clickItem={onClickItem}></AddButton>
     </div>
   );

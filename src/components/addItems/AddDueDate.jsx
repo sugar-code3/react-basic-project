@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
-const AddDueDate = ({AddDate,value}) => {
+const AddDueDate = ({AddDate}) => {
 
   return (
     <>
     <div>
-    <input type="date"  value={value} onChange={AddDate}></input>
+    <input type="date" ref={AddDate}></input>
   </div>
   </>
   )

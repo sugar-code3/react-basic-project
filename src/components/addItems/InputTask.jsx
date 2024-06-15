@@ -1,10 +1,10 @@
 import React from 'react'
 
-const InputTask = ({AddItem , value}) => {
+const InputTask = ({AddItem}) => {
   return (
     <>
          <div >
-          <input type="text" placeholder="Enter Todo here" value={value} onChange={AddItem}></input>
+          <input type="text" placeholder="Enter Todo here"  ref={AddItem}></input>
         </div>
     </>
   )

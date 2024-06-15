@@ -10,3 +10,13 @@ input{
   min-width: 10vw;
   min-height: 7vh;
 }
+.b1{
+  background: none;
+  cursor: pointer;
+}
+.welcomemessage{
+  position: relative;
+  font-weight: 600;
+  top: 70px;
+
+}

@@ -3,20 +3,19 @@ import AddTodo from "./components/addItems/AddTodo";
 import TodHeading from "./components/TodoHeading";
 import TodoItems from "./components/TodoItems";
 import "./App.css";
-import { useState } from "react";
+import {useState } from "react";
 import WelcomeMessage from "./components/WelcomeMessage";
 function App() {
   const intialtodoItem = [];
   const [todoItem, settodoItem] = useState(intialtodoItem);
   const handleAddItem = (ItemName, Itemdate) => {
-    const newItemAdd = [
-      ...todoItem,
-      {
-        name: ItemName,
-        duedate: Itemdate,
-      },
-    ];
-    settodoItem(newItemAdd);
+    settodoItem((currvalue)=> [...currvalue,
+        {
+          name: ItemName, duedate: Itemdate,
+        },
+      ] )
+
+
   };
   return (
     <center className="todo-container">
