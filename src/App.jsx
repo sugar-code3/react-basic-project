@@ -24,7 +24,7 @@ function App() {
         <TodHeading></TodHeading>
         <AddTodo onAddItem={handleAddItem}></AddTodo>
         <WelcomeMessage itemlist={todoItem}></WelcomeMessage>
-        <TodoItems todoItems={todoItem}></TodoItems>
+        <TodoItems todoItems={todoItem} settodoitem={settodoItem}></TodoItems>
       </div>
     </center>
   );
