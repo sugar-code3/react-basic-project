@@ -5,27 +5,43 @@ import TodoItems from "./components/TodoItems";
 import "./App.css";
 import {useState } from "react";
 import WelcomeMessage from "./components/WelcomeMessage";
+import TodoItemfromContext from "./store/todo-item-store";
 function App() {
-  const intialtodoItem = [];
-  const [todoItem, settodoItem] = useState(intialtodoItem);
-  const handleAddItem = (ItemName, Itemdate) => {
+  const [todoItem, settodoItem] = useState([]);
+
+  const addNewItem = (ItemName, Itemdate) => {
     settodoItem((currvalue)=> [...currvalue,
         {
           name: ItemName, duedate: Itemdate,
         },
       ] )
-
-
   };
+
+  const deleteItem = (todoitemnme) => {
+    settodoItem((currdeleteValue)=>
+      currdeleteValue.filter(
+        (item) => item.name !== todoitemnme
+      ))
+  };
+
+
   return (
+    <TodoItemfromContext.Provider value={
+      {
+        todoItem,
+        addNewItem,
+        deleteItem
+      }
+    }>
     <center className="todo-container">
       <div className="items-container">
-        <TodHeading></TodHeading>
-        <AddTodo onAddItem={handleAddItem}></AddTodo>
-        <WelcomeMessage itemlist={todoItem}></WelcomeMessage>
-        <TodoItems todoItems={todoItem} settodoitem={settodoItem}></TodoItems>
+        <TodHeading/>
+        <AddTodo/>
+        <WelcomeMessage/>
+        <TodoItems/>
       </div>
     </center>
+    </TodoItemfromContext.Provider>
   );
 }
 

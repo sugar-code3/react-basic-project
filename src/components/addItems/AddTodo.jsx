@@ -1,10 +1,12 @@
 import InputTask from "./InputTask";
 import AddDueDate from "./AddDueDate";
 import AddButton from "./AddButton";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import style from "../addItems/AddTodo.module.css";
+import TodoItemfromContext from "../../store/todo-item-store";
 
-function AddTodo({ onAddItem }) {
+function AddTodo() {
+  const {addNewItem}=useContext(TodoItemfromContext)
   const todoElement = useRef();
   const duedateElement = useRef();
 
@@ -16,11 +18,10 @@ function AddTodo({ onAddItem }) {
     if (todoName == "" || toddate == "") {
       alert("Enter list Item and date");
     } else {
-      onAddItem(todoName, toddate);
+      addNewItem(todoName, toddate);
       todoElement.current.value = "";
       duedateElement.current.value = "";
     }
-
   };
 
   return (

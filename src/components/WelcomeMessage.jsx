@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import TodoItemfromContext from '../store/todo-item-store'
 
-const WelcomeMessage = ({itemlist}) => {
+const WelcomeMessage = () => {
+  const {todoItem}=useContext(TodoItemfromContext)
   return (
-    itemlist.length==0 &&<h1 className='welcomemessage'>Enjoy your day</h1>
+    todoItem.length==0 &&<h1 className='welcomemessage'>Enjoy your day</h1>
   )
 }
 
