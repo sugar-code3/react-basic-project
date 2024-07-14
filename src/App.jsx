@@ -3,27 +3,49 @@ import AddTodo from "./components/addItems/AddTodo";
 import TodHeading from "./components/TodoHeading";
 import TodoItems from "./components/TodoItems";
 import "./App.css";
-import {useState } from "react";
+import {useReducer, useState } from "react";
 import WelcomeMessage from "./components/WelcomeMessage";
 import TodoItemfromContext from "./store/todo-item-store";
+
+const todoItemReducer=(currtodoItem, action)=>{
+
+  let newTodoItem=currtodoItem;
+  if(action.type==="NEW_ITEM"){
+     newTodoItem=[...currtodoItem,{
+      name:action.payload.ItemName,
+      duedate: action.payload.Itemdate
+     }];
+  }
+  else if(action.type==="DELETE_ITEM"){
+    newTodoItem=currtodoItem.filter((item)=>
+    item.name!==action.payload.ItemName);
+  }
+return newTodoItem;
+}
 function App() {
-  const [todoItem, settodoItem] = useState([]);
+
+  const [todoItem, dispatchTodoItem]=useReducer(todoItemReducer, []);
 
   const addNewItem = (ItemName, Itemdate) => {
-    settodoItem((currvalue)=> [...currvalue,
-        {
-          name: ItemName, duedate: Itemdate,
-        },
-      ] )
+      const newItemaction={
+        type:"NEW_ITEM",
+        payload:{
+          ItemName,
+          Itemdate
+        }
+      }
+      dispatchTodoItem(newItemaction);
   };
 
   const deleteItem = (todoitemnme) => {
-    settodoItem((currdeleteValue)=>
-      currdeleteValue.filter(
-        (item) => item.name !== todoitemnme
-      ))
+     const deleteItemaction={
+      type:"DELETE_ITEM",
+      payload:{
+        ItemName:todoitemnme
+      }
+     }
+     dispatchTodoItem(deleteItemaction);
   };
-
 
   return (
     <TodoItemfromContext.Provider value={
