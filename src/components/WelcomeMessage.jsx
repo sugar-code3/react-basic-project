@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import TodoItemfromContext from '../store/todo-item-store'
+import TodoItemfromContext from '../store/todo-context'
 
 const WelcomeMessage = () => {
   const {todoItem}=useContext(TodoItemfromContext)

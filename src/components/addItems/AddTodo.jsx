@@ -3,10 +3,11 @@ import AddDueDate from "./AddDueDate";
 import AddButton from "./AddButton";
 import { useContext, useRef } from "react";
 import style from "../addItems/AddTodo.module.css";
-import TodoItemfromContext from "../../store/todo-item-store";
+import TodoItemfromContext from "../../store/todo-context";
 
 function AddTodo() {
-  const {addNewItem}=useContext(TodoItemfromContext)
+  const {addNewItem}=useContext(TodoItemfromContext);
+
   const todoElement = useRef();
   const duedateElement = useRef();
 
