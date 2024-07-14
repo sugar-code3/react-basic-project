@@ -8,24 +8,27 @@ function AddTodo({ onAddItem }) {
   const todoElement = useRef();
   const duedateElement = useRef();
 
-  const onClickItem = () => {
+  const onClickItem = (event) => {
+     event.preventDefault();
     const todoName = todoElement.current.value;
     const toddate = duedateElement.current.value;
-    todoElement.current.value = "";
-    duedateElement.current.value = "";
+
     if (todoName == "" || toddate == "") {
       alert("Enter list Item and date");
     } else {
       onAddItem(todoName, toddate);
+      todoElement.current.value = "";
+      duedateElement.current.value = "";
     }
+
   };
 
   return (
-    <div className={style.addtodo}>
+    <form className={style.addtodo}  onSubmit={onClickItem}>
       <InputTask AddItem={todoElement}></InputTask>
       <AddDueDate AddDate={duedateElement}></AddDueDate>
-      <AddButton clickItem={onClickItem}></AddButton>
-    </div>
+      <AddButton />
+    </form>
   );
 }
 export default AddTodo;
